@@ -25,8 +25,6 @@ function App() {
     }
   }
 
-  const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0)
-
   const removeFromCart = (indexToRemove) => {
     const updatedCart = cart.filter((_, index) => index !== indexToRemove)
     setCart(updatedCart)
