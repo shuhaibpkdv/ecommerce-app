@@ -1,8 +1,10 @@
 import { useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css"
 import Navbar from "./components/Navbar"
 import products from "./data/products";
 import ProductCard from "./components/ProductCard";
+import ProductDetails from "./pages/ProductDetails";
 
 function App() {
   const [cart, setCart] = useState([])
@@ -47,35 +49,50 @@ function App() {
   }
 
   return (
-    <div className="container">
+    <BrowserRouter>
+
       <Navbar cartCount={cart.length} />
 
-      <h3>Total: {total}</h3>
+      <Routes>
 
-      {/* Cart items */}
-      <div>
-        {cart.map((item, index) => (
-          <div key={item.id}>
-            {item.name} - ₹{item.price * item.qty}
+        <Route
+          path="/"
+          element={
+            <div className="container">
+              <h3>Total: {total}</h3>
 
-            <button onClick={() => decreaseQty(item.id)}> - </button>
-            <span> {item.qty} </span>
-            <button onClick={() => increaseQty(item.id)}> + </button>
+              {/* Cart items */}
+              <div>
+                {cart.map((item, index) => (
+                  <div key={item.id}>
+                    {item.name} - ₹{item.price * item.qty}
 
-            <button onClick={() => removeFromCart(index)}>
-              Remove
-            </button>
-          </div>
-        ))}
-      </div>
+                    <button onClick={() => decreaseQty(item.id)}> - </button>
+                    <span> {item.qty} </span>
+                    <button onClick={() => increaseQty(item.id)}> + </button>
 
-      {/* products */}
-      <div className="grid">
-        {products.map((p) => (
-          <ProductCard key={p.id} product={p} addToCart={addToCart} />
-        ))}
-      </div>
-    </div>
+                    <button onClick={() => removeFromCart(index)}>
+                      Remove
+                    </button>
+                  </div>
+                ))}
+              </div>
+
+              {/* products */}
+              <div className="grid">
+                {products.map((p) => (
+                  <ProductCard key={p.id} product={p} addToCart={addToCart} />
+                ))}
+              </div>
+            </div>
+          }
+        />
+
+        <Route path="/product/:id" element={<ProductDetails />} />
+
+      </Routes>
+
+    </BrowserRouter>
   );
 }
 
