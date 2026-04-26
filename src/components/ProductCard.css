@@ -8,7 +8,7 @@
 }
 
 .card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-5px) scale(1.02);
   box-shadow: 0 10px 20px rgba(0,0,0,0.1);
 }
 
@@ -41,4 +41,13 @@
 
 .card button:hover {
   background: #333;
+}
+
+.card a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.card a:hover h3 {
+  color: #ff6f00;
 }
