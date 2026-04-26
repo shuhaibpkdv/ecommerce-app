@@ -28,6 +28,23 @@ function App() {
     setCart(updatedCart)
   }
 
+  const increaseQty = (id) => {
+    const updatedCart = cart.map((item) => 
+      item.id === id ? {...item, qty: item.qty + 1} : item
+    )
+    setCart(updatedCart)
+  }
+
+  const decreaseQty = (id) => {
+    const updatedCart = cart
+      .map((item) => 
+        item.id === id ? {...item, qty: item.qty - 1} : item
+      )
+      .filter((item) => item.qty > 0)
+
+    setCart(updatedCart)
+  }
+
   return (
     <div className="container">
       <h1>My Store</h1>
@@ -38,8 +55,12 @@ function App() {
       {/* Cart items */}
       <div>
         {cart.map((item, index) => (
-          <div key={index}>
-            {item.name} x {item.qty} - ₹{item.price * item.qty}
+          <div key={item.id}>
+            {item.name} - ₹{item.price * item.qty}
+
+            <button onClick={() => decreaseQty(item.id)}> - </button>
+            <span> {item.qty} </span>
+            <button onClick={() => increaseQty(item.id)}> + </button>
 
             <button onClick={() => removeFromCart(index)}>
               Remove
