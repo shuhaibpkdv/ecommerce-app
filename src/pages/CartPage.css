@@ -1,0 +1,34 @@
+.cart-container {
+  padding: 20px;
+}
+
+.cart-title {
+  margin-bottom: 20px;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #eee;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  background: white;
+}
+
+.cart-info {
+  flex: 1;
+}
+
+.cart-actions button {
+  margin: 0 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.total {
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: bold;
+}
