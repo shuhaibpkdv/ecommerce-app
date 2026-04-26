@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./App.css"
+import Navbar from "./components/Navbar"
 import products from "./data/products";
 import ProductCard from "./components/ProductCard";
 
@@ -47,9 +48,8 @@ function App() {
 
   return (
     <div className="container">
-      <h1>My Store</h1>
+      <Navbar cartCount={cart.length} />
 
-      <h2>Cart: {cart.length} items</h2>
       <h3>Total: {total}</h3>
 
       {/* Cart items */}
