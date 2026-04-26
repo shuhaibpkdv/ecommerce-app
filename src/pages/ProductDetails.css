@@ -1,0 +1,39 @@
+.details-container {
+  display: flex;
+  gap: 40px;
+  padding: 30px;
+  background: white;
+}
+
+.details-image {
+  width: 350px;
+  border-radius: 10px;
+}
+
+.details-info {
+  flex: 1;
+}
+
+.details-info h2 {
+  margin-bottom: 10px;
+}
+
+.price {
+  color: green;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.add-btn {
+  margin-top: 20px;
+  padding: 12px 20px;
+  background: black;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.add-btn:hover {
+  background: #333;
+}

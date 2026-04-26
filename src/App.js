@@ -70,7 +70,11 @@ function App() {
           }
         />
 
-        <Route path="/product/:id" element={<ProductDetails />} />
+        <Route
+          path="/product/:id" 
+          element={<ProductDetails 
+          addToCart={addToCart} />} 
+        />
 
         <Route
           path="/cart"
@@ -83,6 +87,7 @@ function App() {
             />
           }
         />
+        
       </Routes>
 
     </BrowserRouter>
