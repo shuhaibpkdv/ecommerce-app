@@ -1,14 +1,15 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import "./Navbar.css"
 
 function Navbar({ cartCount }) {
   return (
     <div className='navbar'>
-      <h2 className='logo'>My Store</h2>
+      <Link to="/" className='logo'>My Store</Link>
 
-      <div className='cart'>
+      <Link to="/cart" className='cart'>
         🛒 Cart ({cartCount})
-      </div>
+      </Link>
     </div>
   )
 }
