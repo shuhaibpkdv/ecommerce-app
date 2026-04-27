@@ -64,19 +64,14 @@ function App() {
           path="/"
           element={
             <div className="container">
-              <input 
-                type="text"
-                placeholder="Search products"
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                style={{
-                  padding: "10px 0px",
-                  width: "100%",
-                  marginBottom: "20px",
-                  borderRadius: "8px",
-                  border: "1px solid #ccc"
-                }}
-              />
+              <div className="search-box">
+                <input 
+                  type="text"
+                  placeholder=" Search products"
+                  value={search}
+                  onChange={(e) => setSearch(e.target.value)}
+                />
+              </div>
               {/* products */}
               <div className="grid">
                   {
