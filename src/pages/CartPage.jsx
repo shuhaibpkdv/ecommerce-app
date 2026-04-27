@@ -9,22 +9,31 @@ function CartPage({ cart, increaseQty, decreaseQty, removeFromCart}) {
       <h2 className='cart-title'>Your Cart</h2>
 
       {cart.length === 0? (
-        <p>Cart is empty</p>
+        <p className='empty'>Cart is empty 🛒</p>
       ): (
         <>
           {cart.map((item, index) => (
             <div className='cart-item' key={item.id}>
-              <div className='cart-info'>
+              <img src={item.image} alt={item.name} className="cart-img" />
+
+              <div className="cart-details">
                 <h4>{item.name}</h4>
-                <p>₹{item.price * item.qty}</p>
+                <p>₹{item.price}</p>
+
+                <div className="cart-actions">
+                  <button onClick={() => decreaseQty(item.id)}>-</button>
+                  <span>{item.qty}</span>
+                  <button onClick={() => increaseQty(item.id)}>+</button>
+                </div>
               </div>
 
-              <div className='cart-actions'>
-                <button onClick={() => decreaseQty(item.id)}> - </button>
-                <span> {item.qty} </span>
-                <button onClick={() => increaseQty(item.id)}> + </button>
+              <div className="cart-right">
+                <p className="item-total">₹{item.price * item.qty}</p>
 
-                <button onClick={() => removeFromCart(index)}>
+                <button
+                  className="remove-btn"
+                  onClick={() => removeFromCart(index)}
+                >
                   Remove
                 </button>
               </div>
