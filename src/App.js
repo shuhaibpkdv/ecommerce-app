@@ -49,6 +49,10 @@ function App() {
     setCart(updatedCart)
   }
 
+  const filteredProducts = products.filter((p) => 
+    p.name.toLowerCase().includes(search.toLowerCase())
+  )
+
   return (
     <BrowserRouter>
 
@@ -75,13 +79,17 @@ function App() {
               />
               {/* products */}
               <div className="grid">
-                {products
-                  .filter((p) => 
-                    p.name.toLowerCase().includes(search.toLowerCase())
-                  )
-                  .map((p) => (
-                    <ProductCard key={p.id} product={p} addToCart={addToCart} />
-                ))}
+                  {
+                    filteredProducts.length > 0 ? (
+                      filteredProducts.map((p) => (
+                        <ProductCard key={p.id} product={p} addToCart={addToCart} />
+                      ))
+                    ) : (
+                      <p style={{ textAlign: "center", width: "100%" }}>
+                        No products found 😢
+                      </p>
+                    )
+                  }
               </div>
             </div>
           }
