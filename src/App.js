@@ -72,7 +72,7 @@ function App() {
         <Route
           path="/"
           element={
-            <div className="container">
+            <div className="container fade-in">
               <div className="search-box">
                 <input 
                   type="text"

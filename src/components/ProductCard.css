@@ -4,7 +4,7 @@
   padding: 15px;
   text-align: center;
   background: white;
-  transition: 0.3s;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card:hover {
@@ -37,10 +37,12 @@
   border: none;
   border-radius: 8px;
   cursor: pointer;
+  transition: 0.2s ease;
 }
 
 .card button:hover {
   background: #333;
+  transform: scale(1.05);
 }
 
 .card a {
