@@ -3,6 +3,8 @@
   gap: 40px;
   padding: 30px;
   background: white;
+  max-width: 1000px;
+  margin: auto;
 }
 
 .details-image {
@@ -36,4 +38,26 @@
 
 .add-btn:hover {
   background: #333;
+}
+
+/* 🔥 Mobile Responsive */
+@media (max-width: 600px) {
+  .details-container {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .details-image {
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
+  .details-info {
+    text-align: center;
+  }
+
+  .add-btn {
+    width: 100%;
+  }
 }
