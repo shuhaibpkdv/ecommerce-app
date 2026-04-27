@@ -1,3 +1,8 @@
+.app.dark .card {
+  background: #1e1e1e;
+  color: white;
+}
+
 .card {
   border: 1px solid #eee;
   border-radius: 12px;

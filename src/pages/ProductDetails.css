@@ -1,3 +1,8 @@
+.app.dark .details-container {
+  background: #1e1e1e;
+  color: white;
+}
+
 .details-container {
   display: flex;
   gap: 40px;

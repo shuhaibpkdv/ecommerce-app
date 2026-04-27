@@ -14,6 +14,8 @@ function App() {
 
   const [category, setCategory] = useState("All")
 
+  const [dark, setDark] = useState(false)
+
   const addToCart = (product) => {
     const exist = cart.find((item) => item.id === product.id)
 
@@ -65,65 +67,68 @@ function App() {
   return (
     <BrowserRouter>
 
-      <Navbar cartCount={cart.length} />
-
-      <Routes>
-
-        <Route
-          path="/"
-          element={
-            <div className="container fade-in">
-              <div className="search-box">
-                <input 
-                  type="text"
-                  placeholder=" Search products"
-                  value={search}
-                  onChange={(e) => setSearch(e.target.value)}
-                />
-              </div>
-              <div className="filters">
-                <button onClick={() => setCategory("All")}>All</button>
-                <button onClick={() => setCategory("Fashion")}>Fashion</button>
-                <button onClick={() => setCategory("Electronics")}>Electronics</button>
-                <button onClick={() => setCategory("Accessories")}>Accessories</button>
-              </div>
-              {/* products */}
-              <div className="grid">
-                  {
-                    filteredProducts.length > 0 ? (
-                      filteredProducts.map((p) => (
-                        <ProductCard key={p.id} product={p} addToCart={addToCart} />
-                      ))
-                    ) : (
-                      <p style={{ textAlign: "center", width: "100%" }}>
-                        No products found 😢
-                      </p>
-                    )
-                  }
-              </div>
-            </div>
-          }
-        />
-
-        <Route
-          path="/product/:id" 
-          element={<ProductDetails 
-          addToCart={addToCart} />} 
-        />
-
-        <Route
-          path="/cart"
-          element={
-            <CartPage 
-              cart={cart}
-              increaseQty={increaseQty}
-              decreaseQty={decreaseQty}
-              removeFromCart={removeFromCart}
-            />
-          }
-        />
+      <div className={dark ? "app dark" : "app"}>
         
-      </Routes>
+        <Navbar cartCount={cart.length} dark={dark} setDark={setDark} />
+
+        <Routes>
+
+          <Route
+            path="/"
+            element={
+              <div className="container fade-in">
+                <div className="search-box">
+                  <input 
+                    type="text"
+                    placeholder=" Search products"
+                    value={search}
+                    onChange={(e) => setSearch(e.target.value)}
+                  />
+                </div>
+                <div className="filters">
+                  <button onClick={() => setCategory("All")}>All</button>
+                  <button onClick={() => setCategory("Fashion")}>Fashion</button>
+                  <button onClick={() => setCategory("Electronics")}>Electronics</button>
+                  <button onClick={() => setCategory("Accessories")}>Accessories</button>
+                </div>
+                {/* products */}
+                <div className="grid">
+                    {
+                      filteredProducts.length > 0 ? (
+                        filteredProducts.map((p) => (
+                          <ProductCard key={p.id} product={p} addToCart={addToCart} />
+                        ))
+                      ) : (
+                        <p style={{ textAlign: "center", width: "100%" }}>
+                          No products found 😢
+                        </p>
+                      )
+                    }
+                </div>
+              </div>
+            }
+          />
+
+          <Route
+            path="/product/:id" 
+            element={<ProductDetails 
+            addToCart={addToCart} />} 
+          />
+
+          <Route
+            path="/cart"
+            element={
+              <CartPage 
+                cart={cart}
+                increaseQty={increaseQty}
+                decreaseQty={decreaseQty}
+                removeFromCart={removeFromCart}
+              />
+            }
+          />
+          
+        </Routes>
+      </div>
 
     </BrowserRouter>
   );

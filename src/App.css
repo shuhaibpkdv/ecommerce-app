@@ -4,6 +4,17 @@ body {
   background: #f5f5f5;
 }
 
+.app {
+  background: #f5f5f5;
+  min-height: 100vh;
+  color: black;
+}
+
+.app.dark {
+  background: #121212;
+  color: white;
+}
+
 .container {
   padding: 10px;
 }
