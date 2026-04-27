@@ -12,6 +12,8 @@ function App() {
 
   const [search, setSearch] = useState("")
 
+  const [category, setCategory] = useState("All")
+
   const addToCart = (product) => {
     const exist = cart.find((item) => item.id === product.id)
 
@@ -49,9 +51,16 @@ function App() {
     setCart(updatedCart)
   }
 
-  const filteredProducts = products.filter((p) => 
-    p.name.toLowerCase().includes(search.toLowerCase())
-  )
+  const filteredProducts = products.filter((p) => {
+    const matchSearch = p.name 
+      .toLowerCase()
+      .includes(search.toLowerCase())
+
+    const matchCategory =
+      category === "All" || p.category === category
+
+    return matchSearch && matchCategory
+  })
 
   return (
     <BrowserRouter>
@@ -71,6 +80,12 @@ function App() {
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
                 />
+              </div>
+              <div className="filters">
+                <button onClick={() => setCategory("All")}>All</button>
+                <button onClick={() => setCategory("Fashion")}>Fashion</button>
+                <button onClick={() => setCategory("Electronics")}>Electronics</button>
+                <button onClick={() => setCategory("Accessories")}>Accessories</button>
               </div>
               {/* products */}
               <div className="grid">

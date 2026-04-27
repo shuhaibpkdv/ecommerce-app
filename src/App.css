@@ -33,3 +33,23 @@ body {
   border-color: #111;
   box-shadow: 0 0 5px rgba(0,0,0,0.2);
 }
+
+.filters {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  justify-content: center;
+}
+
+.filters button {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  background: #eee;
+}
+
+.filters button:hover {
+  background: #111;
+  color: white;
+}
