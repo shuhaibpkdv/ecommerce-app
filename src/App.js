@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { use, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css"
 import Navbar from "./components/Navbar"
@@ -9,6 +9,8 @@ import CartPage from "./pages/CartPage";
 
 function App() {
   const [cart, setCart] = useState([])
+
+  const [search, setSearch] = useState("")
 
   const addToCart = (product) => {
     const exist = cart.find((item) => item.id === product.id)
@@ -58,10 +60,27 @@ function App() {
           path="/"
           element={
             <div className="container">
+              <input 
+                type="text"
+                placeholder="Search products"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                style={{
+                  padding: "10px 0px",
+                  width: "100%",
+                  marginBottom: "20px",
+                  borderRadius: "8px",
+                  border: "1px solid #ccc"
+                }}
+              />
               {/* products */}
               <div className="grid">
-                {products.map((p) => (
-                  <ProductCard key={p.id} product={p} addToCart={addToCart} />
+                {products
+                  .filter((p) => 
+                    p.name.toLowerCase().includes(search.toLowerCase())
+                  )
+                  .map((p) => (
+                    <ProductCard key={p.id} product={p} addToCart={addToCart} />
                 ))}
               </div>
             </div>
