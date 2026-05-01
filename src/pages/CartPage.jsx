@@ -40,7 +40,13 @@ function CartPage({ cart, increaseQty, decreaseQty, removeFromCart}) {
             </div>
           ))}
 
-          <div className='total'>Total: ₹{total}</div>
+          <div className='checkout'>
+            <h3>Total: ₹{total}</h3>
+
+            <button className='checkout-btn' disabled={cart.length === 0}>
+              Proceed to Checkout
+            </button>
+          </div>
         </>
       )}
     </div>

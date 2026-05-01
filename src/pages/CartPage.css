@@ -96,9 +96,33 @@
   cursor: pointer;
 }
 
-.total {
-  margin-top: 20px;
+.checkout {
+  margin-top: 30px;
   text-align: right;
+}
+
+.checkout-btn {
+  margin-top: 10px;
+  padding: 12px 20px;
+  background: black;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.checkout-btn:hover {
+  background: #333;
+}
+
+.app.dark .checkout-btn {
+  background: white;
+  color: black;
+}
+
+.app.dark .checkout-btn:hover {
+  background: #ddd;
 }
 
 @media (max-width: 600px) {
