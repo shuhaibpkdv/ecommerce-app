@@ -81,3 +81,21 @@ body {
   color: white;
   transform: translateY(-2px);
 }
+
+.toast {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: black;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+  animation: fadeInOut 2s ease;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translateY(10px); }
+  20% { opacity: 1; transform: translateY(0); }
+  80% { opacity: 1; }
+  100% { opacity: 0; }
+}

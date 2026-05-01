@@ -16,6 +16,8 @@ function App() {
 
   const [dark, setDark] = useState(false)
 
+  const [toast, setToast] = useState("")
+
   const addToCart = (product) => {
     const exist = cart.find((item) => item.id === product.id)
 
@@ -29,6 +31,12 @@ function App() {
     } else {
       setCart([...cart, {...product, qty: 1}])
     }
+
+    setToast(`${product.name} added to cart`)
+
+    setTimeout(() => {
+      setToast("")
+    }, 2000)
   }
 
   const removeFromCart = (indexToRemove) => {
@@ -71,6 +79,8 @@ function App() {
         
         <Navbar cartCount={cart.length} dark={dark} setDark={setDark} />
 
+        {toast && <div className="toast">{toast}</div>}
+        
         <Routes>
 
           <Route
