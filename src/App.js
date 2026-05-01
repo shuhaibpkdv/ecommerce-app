@@ -120,6 +120,7 @@ function App() {
             element={
               <CartPage 
                 cart={cart}
+                setCart={setCart}
                 increaseQty={increaseQty}
                 decreaseQty={decreaseQty}
                 removeFromCart={removeFromCart}

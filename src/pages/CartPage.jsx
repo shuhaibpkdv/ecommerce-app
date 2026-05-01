@@ -1,7 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "./CartPage.css"
 
-function CartPage({ cart, increaseQty, decreaseQty, removeFromCart}) { 
+function CartPage({ cart, setCart, increaseQty, decreaseQty, removeFromCart}) { 
+
+  const [showPopup, setShowPopup] = useState(false)
+
   const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0)
 
   return (
@@ -36,6 +39,9 @@ function CartPage({ cart, increaseQty, decreaseQty, removeFromCart}) {
                 >
                   Remove
                 </button>
+
+
+
               </div>
             </div>
           ))}
@@ -43,9 +49,29 @@ function CartPage({ cart, increaseQty, decreaseQty, removeFromCart}) {
           <div className='checkout'>
             <h3>Total: ₹{total}</h3>
 
-            <button className='checkout-btn' disabled={cart.length === 0}>
+            <button 
+              className='checkout-btn' 
+              onClick={() => setShowPopup(true)}
+              disabled={cart.length === 0}
+            >
               Proceed to Checkout
             </button>
+
+            {showPopup && (
+              <div className="popup">
+                <div className="popup-content">
+                  <h3>🎉 Order Placed!</h3>
+                  <p>Your order was successful.</p>
+
+                  <button onClick={() => {
+                    setShowPopup(false)
+                    setCart([])
+                  }}>
+                    Close
+                  </button>
+                </div>
+              </div>
+            )}
           </div>
         </>
       )}
